@@ -1,6 +1,6 @@
 package henry.farr;
 
-import java.text.DecimalFormat;
+//import java.text.DecimalFormat;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -22,7 +22,7 @@ public class Main {
 	static Set<String> list;
 	
 	public static void main(String[] args) {
-		
+		System.out.println("Debug"); 
 		ConsoleRun("Permutation lister v1.0");	//Accepted parameter of ConsoleRun is the startup message
 	}
 	
@@ -128,9 +128,9 @@ public class Main {
 			case "print": System.out.println(ConsoleParse(Main.ConsoleInput)); ConsoleInputNull(); break;
 			case "easteregg": System.out.println("You've found easter!"); break;
 			case "spellcheck": SpellCheckToggle(); break;
-			case "hashclear": list.clear(); break;
+			case "hashclear": if (list != null) {list.clear();} else {System.out.println("The list is not declared");} break;
 			case "factorial": System.out.println(factorial(Integer.parseInt(ConsoleParse(Main.ConsoleInput)))); ConsoleInputNull(); break;
-			
+			case "settings": 
 			
 			case "": System.out.println("Oh dear :c (The string is null. This can happen if the ConsoleParse is called more than once during an iteration of ConsoleRun, or if the input string is a space)"); ConsoleInputNull(); break;	//This case will (should) never be reached
 			case "stop": Main.running = false; System.out.println("Program terminated."); break;
@@ -178,10 +178,10 @@ public class Main {
 	//I should probably make a thingy to write this stuff to a file, and also a thingy where you can input an integer
 	//between 0 and n! where n is the input length and that would give you the permutation at that spot
 	
-	
+	//note to self: add a thingy to write this stuff to a file. pls. include as console command maybe.
 	static void Permute(String Input) {
 		
-		list = new HashSet<String>();
+		list = new HashSet<String>();	//the hashset stores all of the permutations, and new ones are checked against it so they don't repeat
 		culled = 0;
 		
 		String output;
